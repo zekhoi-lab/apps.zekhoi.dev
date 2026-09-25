@@ -1,0 +1,41 @@
+---
+import type { GetStaticPaths } from "astro";
+import { render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  getApps,
+  getAppSlug,
+  getDocName,
+  getDocs,
+  type AppEntry,
+  type DocEntry,
+} from "../../lib/apps";
+
+export const getStaticPaths = (async () => {
+  const apps = await getApps();
+  const paths = await Promise.all(
+    apps.map(async (app) => {
+      const slug = getAppSlug(app);
+      const docs = await getDocs(slug);
+      return docs.map((doc) => ({
+        params: { app: slug, doc: getDocName(doc) },
+        props: { app, doc },
+      }));
+    }),
+  );
+  return paths.flat();
+}) satisfies GetStaticPaths;
+
+interface Props {
+  app: AppEntry;
+  doc: DocEntry;
+}
+
+const { app, doc } = Astro.props;
+const { Content } = await render(doc);
+---
+
+<BaseLayout title={`${doc.data.title} - ${app.data.name}`}>
+  <h1>{doc.data.title}</h1>
+  <Content />
+</BaseLayout>

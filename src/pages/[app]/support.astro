@@ -1,0 +1,24 @@
+---
+import type { GetStaticPaths } from "astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getApps, getAppSlug, type AppEntry } from "../../lib/apps";
+
+export const getStaticPaths = (async () => {
+  const apps = await getApps();
+  return apps.map((app) => ({
+    params: { app: getAppSlug(app) },
+    props: { app },
+  }));
+}) satisfies GetStaticPaths;
+
+interface Props {
+  app: AppEntry;
+}
+
+const { app } = Astro.props;
+---
+
+<BaseLayout title={`Support - ${app.data.name}`}>
+  <h1>{app.data.name} support</h1>
+  <a href={`mailto:${app.data.supportEmail}`}>{app.data.supportEmail}</a>
+</BaseLayout>
