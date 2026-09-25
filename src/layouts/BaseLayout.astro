@@ -1,22 +1,70 @@
 ---
+import type { ImageMetadata } from "astro";
 import "@fontsource-variable/inter";
 import "../styles/global.css";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import SEO from "../components/SEO.astro";
+import type { AppEntry } from "../lib/apps";
+import { SITE } from "../lib/site";
 
 interface Props {
   title: string;
   description?: string;
+  image?: ImageMetadata;
+  imageAlt?: string;
+  app?: AppEntry;
+  current?: "home";
+  noindex?: boolean;
 }
 
-const { title } = Astro.props;
+const {
+  title,
+  description = SITE.description,
+  image,
+  imageAlt,
+  app,
+  current,
+  noindex,
+} = Astro.props;
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="theme-color"
+      content="#fafaf9"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#0c0a09"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <SEO
+      title={title}
+      description={description}
+      image={image}
+      imageAlt={imageAlt}
+      noindex={noindex}
+    />
+    <slot name="head" />
   </head>
-  <body>
-    <slot />
+  <body class="flex min-h-dvh flex-col">
+    <a
+      href="#main"
+      class="bg-accent text-accent-fg sr-only z-50 rounded-md px-4 py-2 focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+    >
+      Skip to content
+    </a>
+    <Header current={current} />
+    <main id="main" class="flex-1">
+      <slot />
+    </main>
+    <Footer app={app} />
   </body>
 </html>

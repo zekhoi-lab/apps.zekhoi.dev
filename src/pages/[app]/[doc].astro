@@ -1,8 +1,9 @@
 ---
 import type { GetStaticPaths } from "astro";
 import { render } from "astro:content";
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import LegalLayout from "../../layouts/LegalLayout.astro";
 import {
+  DOC_LABELS,
   getApps,
   getAppSlug,
   getDocName,
@@ -10,6 +11,7 @@ import {
   type AppEntry,
   type DocEntry,
 } from "../../lib/apps";
+import { SITE } from "../../lib/site";
 
 export const getStaticPaths = (async () => {
   const apps = await getApps();
@@ -19,7 +21,7 @@ export const getStaticPaths = (async () => {
       const docs = await getDocs(slug);
       return docs.map((doc) => ({
         params: { app: slug, doc: getDocName(doc) },
-        props: { app, doc },
+        props: { app, doc, siblings: docs.filter((d) => d.id !== doc.id) },
       }));
     }),
   );
@@ -29,13 +31,37 @@ export const getStaticPaths = (async () => {
 interface Props {
   app: AppEntry;
   doc: DocEntry;
+  siblings: DocEntry[];
 }
 
-const { app, doc } = Astro.props;
-const { Content } = await render(doc);
+const { app, doc, siblings } = Astro.props;
+const { Content, headings } = await render(doc);
+const slug = getAppSlug(app);
+const name = getDocName(doc);
+
+const descriptions = {
+  privacy: `How ${app.data.name} collects, uses, and protects your data.`,
+  terms: `The terms for using ${app.data.name}.`,
+  "delete-account": `How to delete your ${app.data.name} account and what happens to your data.`,
+};
+
+const related = [
+  ...siblings.map((sibling) => ({
+    href: `/${slug}/${getDocName(sibling)}`,
+    label: DOC_LABELS[getDocName(sibling)],
+  })),
+  { href: `/${slug}/support`, label: "Support" },
+];
 ---
 
-<BaseLayout title={`${doc.data.title} - ${app.data.name}`}>
-  <h1>{doc.data.title}</h1>
+<LegalLayout
+  title={doc.data.title}
+  description={doc.data.description ?? descriptions[name]}
+  updatedAt={doc.data.updatedAt}
+  headings={headings}
+  app={app}
+  byline={`${app.data.name} by ${SITE.developer}`}
+  related={related}
+>
   <Content />
-</BaseLayout>
+</LegalLayout>

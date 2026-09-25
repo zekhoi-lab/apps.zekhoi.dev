@@ -1,0 +1,100 @@
+---
+import {
+  DOC_LABELS,
+  getApps,
+  getAppSlug,
+  getDocName,
+  getDocs,
+  type AppEntry,
+} from "../lib/apps";
+import { SITE, publicPath } from "../lib/site";
+
+interface Props {
+  app?: AppEntry;
+}
+
+const { app } = Astro.props;
+const slug = app ? getAppSlug(app) : undefined;
+const appLinks = slug
+  ? [
+      { href: `/${slug}/support`, label: "Support" },
+      ...(await getDocs(slug)).map((doc) => ({
+        href: `/${slug}/${getDocName(doc)}`,
+        label: DOC_LABELS[getDocName(doc)],
+      })),
+    ]
+  : [];
+const year = new Date().getFullYear();
+// Badge guidelines ask for trademark attribution wherever a badge appears.
+const showsBadges = (await getApps()).some(
+  (entry) => entry.data.links.playStore || entry.data.links.appStore,
+);
+---
+
+<footer class="border-border mt-24 border-t">
+  <div class="container-page grid gap-10 py-12 text-sm sm:grid-cols-2">
+    {app && (
+      <nav aria-label={`${app.data.name} links`}>
+        <h2 class="font-semibold">{app.data.name}</h2>
+        <ul class="mt-3 space-y-2">
+          {appLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="text-muted hover:text-fg rounded-sm transition-colors"
+                aria-current={
+                  publicPath(Astro.url) === link.href ? "page" : undefined
+                }
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    )}
+    <div class:list={[!app && "sm:col-span-2"]}>
+      <h2 class="font-semibold">{SITE.studio}</h2>
+      <p class="text-muted mt-3 max-w-sm leading-relaxed">
+        Apps and games by {SITE.developer}.
+      </p>
+      <ul class="mt-3 space-y-2">
+        <li>
+          <a
+            href="/"
+            class="text-muted hover:text-fg rounded-sm transition-colors"
+          >
+            All apps and games
+          </a>
+        </li>
+        <li>
+          <a
+            href={`mailto:${SITE.email}`}
+            class="text-muted hover:text-fg rounded-sm transition-colors"
+          >
+            {SITE.email}
+          </a>
+        </li>
+        <li>
+          <a
+            href="/privacy"
+            class="text-muted hover:text-fg rounded-sm transition-colors"
+          >
+            Website privacy
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="container-page text-muted pb-10 text-xs">
+    <p>
+      Copyright {year}
+      <a href={SITE.homepage} class="hover:text-fg rounded-sm">
+        {SITE.developer}
+      </a>
+      .
+      {showsBadges &&
+        " Google Play and the Google Play logo are trademarks of Google LLC. App Store is a service mark of Apple Inc."}
+    </p>
+  </div>
+</footer>
