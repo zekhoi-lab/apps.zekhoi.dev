@@ -1,7 +1,21 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import { Content, frontmatter, getHeadings } from "../content/site/privacy.md";
+import LegalLayout from "../layouts/LegalLayout.astro";
+import { getApps, getAppSlug } from "../lib/apps";
+
+const apps = await getApps();
+const related = apps.map((app) => ({
+  href: `/${getAppSlug(app)}/privacy`,
+  label: `${app.data.name} privacy policy`,
+}));
 ---
 
-<BaseLayout title="Privacy Policy">
-  <h1>Privacy Policy</h1>
-</BaseLayout>
+<LegalLayout
+  title={frontmatter.title}
+  description={frontmatter.description}
+  updatedAt={new Date(frontmatter.updatedAt)}
+  headings={getHeadings()}
+  related={related}
+>
+  <Content />
+</LegalLayout>
