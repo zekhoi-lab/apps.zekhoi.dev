@@ -91,12 +91,12 @@ src/pages/
 - App slugs must not collide with top-level routes (checked at build time).
 - Every app page links to its privacy, terms, support, and (if applicable) delete-account pages in the footer.
 
-| Page | URL |
-|---|---|
-| Landing | `https://apps.zekhoi.dev/daylime` |
-| Privacy policy | `https://apps.zekhoi.dev/daylime/privacy` |
-| Terms | `https://apps.zekhoi.dev/daylime/terms` |
-| Support | `https://apps.zekhoi.dev/daylime/support` |
+| Page             | URL                                              |
+| ---------------- | ------------------------------------------------ |
+| Landing          | `https://apps.zekhoi.dev/daylime`                |
+| Privacy policy   | `https://apps.zekhoi.dev/daylime/privacy`        |
+| Terms            | `https://apps.zekhoi.dev/daylime/terms`          |
+| Support          | `https://apps.zekhoi.dev/daylime/support`        |
 | Account deletion | `https://apps.zekhoi.dev/daylime/delete-account` |
 
 ## Phase 4: Layouts and Components
