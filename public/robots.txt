@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://apps.zekhoi.dev/sitemap-index.xml

@@ -6,6 +6,7 @@ type: app
 platforms: [android]
 status: coming-soon
 icon: ../../../assets/apps/daylime/icon.png
+ogImage: ../../../assets/apps/daylime/og.png
 screenshots: []
 features:
   - title: Track your mood

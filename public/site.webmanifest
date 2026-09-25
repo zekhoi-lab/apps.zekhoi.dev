@@ -1,0 +1,19 @@
+{
+  "name": "zekhoi apps",
+  "short_name": "zekhoi apps",
+  "description": "Apps and games by zekhoi.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#fafaf9",
+  "theme_color": "#1c1917",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    {
+      "src": "/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

@@ -2,6 +2,7 @@
 import type { ImageMetadata } from "astro";
 import "@fontsource-variable/inter";
 import "../styles/global.css";
+import defaultOgImage from "../assets/og-default.png";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import SEO from "../components/SEO.astro";
@@ -21,8 +22,8 @@ interface Props {
 const {
   title,
   description = SITE.description,
-  image,
-  imageAlt,
+  image = defaultOgImage,
+  imageAlt = image === defaultOgImage ? "Apps and games by zekhoi" : undefined,
   app,
   current,
   noindex,
@@ -44,6 +45,10 @@ const {
       content="#0c0a09"
       media="(prefers-color-scheme: dark)"
     />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <SEO
       title={title}
