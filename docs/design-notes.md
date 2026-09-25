@@ -116,7 +116,7 @@ Route: `/daylime/support` (and a small studio `/support` that lists apps and the
 1. H1 "Daylime Support" plus one sentence.
 2. FAQ grouped under 3 to 5 short headings (Daylio / Bear style), e.g. Getting started, Your data and privacy, The AI companion, Account, Troubleshooting. Each question as a native `<details><summary>` element: expandable with zero JS, and searchable with the browser's find. Question-shaped titles.
 3. The Account group links prominently to "Delete your account" (Things puts deletion in the account section; Daylio's omission is the counter-example).
-4. Contact card (Halide): email address, a `mailto:` link with a prefilled subject and body template asking for phone model, Android version and app version; one honest line on response time ("zekhoi is a small studio, so please allow a few working days").
+4. Contact card (Halide): email address, a `mailto:` link with a prefilled subject and body template asking for phone model, Android version and app version; one honest line on response time ("zekhoi works on these alone, so please allow a few working days").
 5. Community fallback (Day One's forum idea, adapted): "Found a bug? Open an issue on GitHub" since Daylime is open source.
 
 ---

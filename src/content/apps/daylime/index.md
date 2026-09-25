@@ -20,7 +20,7 @@ features:
 links:
   website: https://daylime.app
   github: https://github.com/zekhoi/daylime
-supportEmail: TODO@zekhoi.dev
+supportEmail: me@zekhoi.dev
 hasAccounts: true
 faq:
   - question: When will Daylime be available?

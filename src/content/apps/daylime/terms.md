@@ -66,4 +66,4 @@ These terms are governed by the laws of the Republic of Indonesia. Any dispute w
 
 ## Contact
 
-Questions about these terms? Email [TODO@zekhoi.dev](mailto:TODO@zekhoi.dev).
+Questions about these terms? Email [me@zekhoi.dev](mailto:me@zekhoi.dev).

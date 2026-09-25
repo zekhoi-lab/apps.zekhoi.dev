@@ -1,6 +1,6 @@
 // Renders 1200x630 Open Graph images with sharp.
 //   node scripts/og-image.mjs <slug>   app image from src/content/apps/<slug>/index.md
-//   node scripts/og-image.mjs          studio default image
+//   node scripts/og-image.mjs          site default image
 // Text uses the Inter font if fontconfig can find it (for example with
 // FONTCONFIG_FILE pointing at a config that includes InterVariable.ttf),
 // and falls back to the system sans-serif otherwise.

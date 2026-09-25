@@ -22,7 +22,7 @@ You can delete your Daylime account at any time, from inside the app or by email
 
 If you have uninstalled Daylime or cannot sign in, email us to request deletion.
 
-1. Send an email to [TODO@zekhoi.dev](mailto:TODO@zekhoi.dev?subject=Delete%20my%20Daylime%20account) from the address you use for your Daylime account, with the subject "Delete my Daylime account".
+1. Send an email to [me@zekhoi.dev](mailto:me@zekhoi.dev?subject=Delete%20my%20Daylime%20account) from the address you use for your Daylime account, with the subject "Delete my Daylime account".
 2. If you write from a different address, include your account email. We will confirm the request with that address before deleting anything.
 3. We reply to confirm when your account has been deleted.
 
@@ -47,4 +47,4 @@ We process deletion requests within TODO: number of days, for example 7 days.
 
 Deletion cannot be undone. If you want to use Daylime again, you can create a new account, but your old entries will not come back.
 
-For anything else about your data, see the [privacy policy](/daylime/privacy) or email [TODO@zekhoi.dev](mailto:TODO@zekhoi.dev).
+For anything else about your data, see the [privacy policy](/daylime/privacy) or email [me@zekhoi.dev](mailto:me@zekhoi.dev).

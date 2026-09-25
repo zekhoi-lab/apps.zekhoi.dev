@@ -1,11 +1,9 @@
 export const SITE = {
   name: "zekhoi apps",
-  studio: "zekhoi",
   developer: "zekhoi",
   url: "https://apps.zekhoi.dev",
   homepage: "https://zekhoi.dev",
-  // TODO: confirm the studio contact address.
-  email: "TODO@zekhoi.dev",
+  email: "me@zekhoi.dev",
   description:
     "Apps and games by zekhoi, with downloads, support, and policies for each one.",
 } as const;

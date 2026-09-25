@@ -28,4 +28,4 @@ If this policy changes, the date at the top of this page will change too.
 
 ## Contact
 
-Email [TODO@zekhoi.dev](mailto:TODO@zekhoi.dev) with any question about this policy.
+Email [me@zekhoi.dev](mailto:me@zekhoi.dev) with any question about this policy.

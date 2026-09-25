@@ -12,7 +12,7 @@ Effective date: TODO: set to the public release date.
 
 Daylime is made by zekhoi, an independent developer. TODO: confirm the developer name exactly as it appears on the Google Play listing, and add a postal address if one is required for your listing.
 
-For anything about this policy or your data, email [TODO@zekhoi.dev](mailto:TODO@zekhoi.dev).
+For anything about this policy or your data, email [me@zekhoi.dev](mailto:me@zekhoi.dev).
 
 ## What we collect
 
@@ -102,4 +102,4 @@ If we change this policy, we will update the date at the top of this page. For s
 
 ## Contact
 
-Email [TODO@zekhoi.dev](mailto:TODO@zekhoi.dev) with any question about this policy or your data.
+Email [me@zekhoi.dev](mailto:me@zekhoi.dev) with any question about this policy or your data.
