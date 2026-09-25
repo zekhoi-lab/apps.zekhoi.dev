@@ -1,0 +1,52 @@
+---
+import { Image } from "astro:assets";
+import googlePlay from "../assets/badges/google-play.png";
+import appStore from "../assets/badges/app-store.svg";
+
+interface Props {
+  appName: string;
+  playStore?: string;
+  appStore?: string;
+}
+
+const { appName, playStore, appStore: appStoreUrl } = Astro.props;
+---
+
+{(playStore || appStoreUrl) && (
+  <ul class="flex flex-wrap items-center gap-3">
+    {appStoreUrl && (
+      <li>
+        <a
+          href={appStoreUrl}
+          class="focus-visible:outline-accent block rounded-lg"
+          rel="noopener"
+        >
+          <Image
+            src={appStore}
+            alt={`Download ${appName} on the App Store`}
+            class="h-12 w-auto"
+          />
+        </a>
+      </li>
+    )}
+    {playStore && (
+      <li>
+        {/* The Google badge PNG includes transparent padding, so it is
+              drawn larger and pulled in to match the App Store badge. */}
+        <a
+          href={playStore}
+          class="focus-visible:outline-accent -my-3 -mx-2.5 block rounded-lg"
+          rel="noopener"
+        >
+          <Image
+            src={googlePlay}
+            alt={`Get ${appName} on Google Play`}
+            widths={[186, 372]}
+            sizes="186px"
+            class="h-18 w-auto"
+          />
+        </a>
+      </li>
+    )}
+  </ul>
+)}

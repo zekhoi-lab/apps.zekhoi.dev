@@ -1,0 +1,85 @@
+---
+import { Image } from "astro:assets";
+import AppMeta from "./AppMeta.astro";
+import StoreBadges from "./StoreBadges.astro";
+import type { AppEntry } from "../lib/apps";
+
+interface Props {
+  app: AppEntry;
+}
+
+const { app } = Astro.props;
+const { name, tagline, icon, platforms, links, status } = app.data;
+
+const hasStoreLinks = Boolean(links.playStore || links.appStore);
+const storeNames = platforms
+  .map((platform) =>
+    platform === "android"
+      ? "Google Play"
+      : platform === "ios"
+        ? "the App Store"
+        : "the web",
+  )
+  .join(" and ");
+const comingSoon =
+  !hasStoreLinks && !links.web
+    ? status === "coming-soon"
+      ? `Coming soon to ${storeNames}`
+      : `Available soon on ${storeNames}`
+    : undefined;
+
+const secondaryLinks = [
+  links.web && { href: links.web, label: `Open ${name} on the web` },
+  links.website && {
+    href: links.website,
+    label: `Visit ${new URL(links.website).hostname}`,
+  },
+  links.github && { href: links.github, label: "View source on GitHub" },
+].filter((link): link is { href: string; label: string } => Boolean(link));
+---
+
+<section class="container-page pt-16 pb-12 sm:pt-24">
+  <Image
+    src={icon}
+    alt={`${name} app icon`}
+    width={96}
+    height={96}
+    densities={[1, 2]}
+    loading="eager"
+    fetchpriority="high"
+    class="rounded-icon border-border size-24 border"
+  />
+  <h1 class="text-hero mt-8 font-semibold">{name}</h1>
+  <p class="text-muted mt-4 max-w-xl text-xl leading-snug sm:text-2xl">
+    {tagline}
+  </p>
+  <div class="mt-6">
+    <AppMeta app={app} />
+  </div>
+
+  <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
+    {hasStoreLinks && (
+      <StoreBadges
+        appName={name}
+        playStore={links.playStore}
+        appStore={links.appStore}
+      />
+    )}
+    {comingSoon && (
+      <p class="border-border bg-surface inline-flex items-center rounded-full border px-4 py-2 text-sm font-medium">
+        {comingSoon}
+      </p>
+    )}
+    {secondaryLinks.length > 0 && (
+      <ul class="flex flex-wrap gap-x-6 gap-y-2">
+        {secondaryLinks.map((link) => (
+          <li>
+            <a href={link.href} class="link" rel="noopener">
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+</section>

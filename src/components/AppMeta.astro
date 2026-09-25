@@ -1,0 +1,29 @@
+---
+import PlatformLabel from "./PlatformLabel.astro";
+import StatusBadge from "./StatusBadge.astro";
+import type { AppEntry } from "../lib/apps";
+
+interface Props {
+  app: AppEntry;
+  showType?: boolean;
+}
+
+const { app, showType = false } = Astro.props;
+const { type, platforms, status, links } = app.data;
+---
+
+<ul
+  class="text-muted flex flex-wrap items-center gap-x-3 gap-y-2 text-sm"
+  aria-label="Details"
+>
+  <li>
+    <StatusBadge status={status} />
+  </li>
+  {showType && <li>{type === "game" ? "Game" : "App"}</li>}
+  {platforms.map((platform) => (
+    <li>
+      <PlatformLabel platform={platform} />
+    </li>
+  ))}
+  {links.github && <li>Open source</li>}
+</ul>

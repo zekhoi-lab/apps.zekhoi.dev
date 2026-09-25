@@ -1,0 +1,17 @@
+---
+import type { AppEntry } from "../lib/apps";
+
+interface Props {
+  platform: AppEntry["data"]["platforms"][number];
+}
+
+const { platform } = Astro.props;
+
+const labels: Record<Props["platform"], string> = {
+  android: "Android",
+  ios: "iOS",
+  web: "Web",
+};
+---
+
+<span>{labels[platform]}</span>
