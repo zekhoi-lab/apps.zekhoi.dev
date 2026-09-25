@@ -1,17 +1,85 @@
 ---
+import AppCard from "../components/AppCard.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { getApps, getAppSlug } from "../lib/apps";
+import { getApps } from "../lib/apps";
+import { SITE, pageTitle } from "../lib/site";
 
 const apps = await getApps();
+const hasApps = apps.some((app) => app.data.type === "app");
+const hasGames = apps.some((app) => app.data.type === "game");
+const showFilter = hasApps && hasGames;
+
+const filters = [
+  { value: "all", label: "All" },
+  { value: "app", label: "Apps" },
+  { value: "game", label: "Games" },
+];
 ---
 
-<BaseLayout title="Apps and games by zekhoi">
-  <h1>Apps and games</h1>
-  <ul>
-    {apps.map((app) => (
-      <li>
-        <a href={`/${getAppSlug(app)}`}>{app.data.name}</a>
-      </li>
-    ))}
-  </ul>
+<BaseLayout title={pageTitle("Apps and games")} current="home">
+  <div class="container-page">
+    <section class="max-w-2xl pt-16 pb-12 sm:pt-24">
+      <h1 class="text-hero font-semibold">
+        Apps and games by {SITE.developer}
+      </h1>
+      <p class="text-muted mt-5 text-lg leading-relaxed sm:text-xl">
+        {SITE.developer} builds apps and games under the {SITE.studio} name.
+        Each one has its own page here with downloads, support, and policies.
+      </p>
+    </section>
+
+    <section aria-labelledby="catalog-heading" class="catalog">
+      <h2 id="catalog-heading" class="sr-only">
+        All apps and games
+      </h2>
+      {showFilter && (
+        <fieldset class="mb-6 flex gap-2">
+          <legend class="sr-only">Show</legend>
+          {filters.map((filter) => (
+            <label class="filter-option">
+              <input
+                type="radio"
+                name="type"
+                value={filter.value}
+                class="sr-only"
+                checked={filter.value === "all"}
+              />
+              {filter.label}
+            </label>
+          ))}
+        </fieldset>
+      )}
+      <ul
+        class:list={["grid gap-4", apps.length >= 3 && "md:grid-cols-2"]}
+        role="list"
+      >
+        {apps.map((app) => (
+          <li data-type={app.data.type}>
+            <AppCard app={app} headingLevel="h3" />
+          </li>
+        ))}
+      </ul>
+    </section>
+  </div>
 </BaseLayout>
+
+<style>
+  @reference "../styles/global.css";
+
+  .filter-option {
+    @apply cursor-pointer rounded-full border border-border px-4 py-1.5 text-sm font-medium text-muted transition-colors hover:text-fg;
+  }
+
+  .filter-option:has(:checked) {
+    @apply border-fg bg-fg text-bg;
+  }
+
+  .filter-option:has(:focus-visible) {
+    @apply outline-2 outline-offset-2 outline-accent;
+  }
+
+  .catalog:has([value="app"]:checked) li[data-type="game"],
+  .catalog:has([value="game"]:checked) li[data-type="app"] {
+    display: none;
+  }
+</style>

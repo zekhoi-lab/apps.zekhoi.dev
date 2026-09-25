@@ -1,7 +1,16 @@
 ---
 import type { GetStaticPaths } from "astro";
+import FAQ from "../../components/FAQ.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { getApps, getAppSlug, type AppEntry } from "../../lib/apps";
+import {
+  DOC_LABELS,
+  getApps,
+  getAppSlug,
+  getDocName,
+  getDocs,
+  type AppEntry,
+} from "../../lib/apps";
+import { SITE, pageTitle } from "../../lib/site";
 
 export const getStaticPaths = (async () => {
   const apps = await getApps();
@@ -16,9 +25,110 @@ interface Props {
 }
 
 const { app } = Astro.props;
+const { name, supportEmail, faq, links, platforms } = app.data;
+const slug = getAppSlug(app);
+
+const docs = await getDocs(slug);
+
+const osLabel = [
+  platforms.includes("android") && "Android",
+  platforms.includes("ios") && "iOS",
+]
+  .filter(Boolean)
+  .join(" or ");
+const mailto = `mailto:${supportEmail}?${new URLSearchParams({
+  subject: `${name} support`,
+  body: `Describe the problem:\n\n\nDevice model:\n${osLabel || "Browser"} version:\n${name} version:\n`,
+})
+  .toString()
+  .replace(/\+/g, "%20")}`;
 ---
 
-<BaseLayout title={`Support - ${app.data.name}`}>
-  <h1>{app.data.name} support</h1>
-  <a href={`mailto:${app.data.supportEmail}`}>{app.data.supportEmail}</a>
+<BaseLayout
+  title={pageTitle("Support", name)}
+  description={`Get help with ${name}: common questions and how to contact support.`}
+  image={app.data.ogImage}
+  app={app}
+>
+  <div class="container-page">
+    <div class="max-w-[68ch] py-16">
+      <a
+        href={`/${slug}`}
+        class="text-muted hover:text-fg inline-flex items-center gap-2 rounded-sm text-sm font-medium transition-colors"
+      >
+        <svg
+          class="size-4"
+          viewBox="0 0 16 16"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          aria-hidden="true"
+        >
+          <path d="M10 3 5 8l5 5"></path>
+        </svg>
+        {name}
+      </a>
+      <h1 class="mt-4 text-3xl leading-tight font-semibold tracking-tight sm:text-4xl">
+        {name} support
+      </h1>
+      <p class="text-muted mt-4 text-lg leading-relaxed">
+        Answers to common questions, and how to reach us when you need help.
+      </p>
+
+      {faq.length > 0 && (
+        <section aria-labelledby="faq-heading" class="mt-14">
+          <h2 id="faq-heading" class="text-2xl font-semibold tracking-tight">
+            Common questions
+          </h2>
+          <div class="mt-6">
+            <FAQ items={faq} />
+          </div>
+        </section>
+      )}
+
+      <section
+        aria-labelledby="contact-heading"
+        class="rounded-card border-border bg-surface mt-14 border p-6 sm:p-8"
+      >
+        <h2 id="contact-heading" class="text-xl font-semibold">
+          Contact support
+        </h2>
+        <p class="text-muted mt-2 leading-relaxed">
+          Email us and include your device model, OS version, and {name} version
+          so we can help faster. {SITE.studio} is a small studio, so a reply can
+          take a few working days.
+        </p>
+        <a
+          href={mailto}
+          class="bg-accent text-accent-fg hover:bg-accent-strong mt-6 inline-flex items-center rounded-full px-5 py-2.5 font-medium transition-colors"
+        >
+          Email {supportEmail}
+        </a>
+        {links.github && (
+          <p class="text-muted mt-6 leading-relaxed">
+            Found a bug?{" "}
+            <a href={`${links.github}/issues`} class="link" rel="noopener">
+              Open an issue on GitHub
+            </a>
+            .
+          </p>
+        )}
+      </section>
+
+      <section aria-labelledby="data-heading" class="mt-14">
+        <h2 id="data-heading" class="text-2xl font-semibold tracking-tight">
+          Your account and data
+        </h2>
+        <ul class="mt-4 space-y-2 text-lg">
+          {docs.map((doc) => (
+            <li>
+              <a href={`/${slug}/${getDocName(doc)}`} class="link">
+                {DOC_LABELS[getDocName(doc)]}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </div>
+  </div>
 </BaseLayout>

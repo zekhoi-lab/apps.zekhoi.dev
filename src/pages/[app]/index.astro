@@ -1,7 +1,18 @@
 ---
 import type { GetStaticPaths } from "astro";
+import { render } from "astro:content";
+import AppHero from "../../components/AppHero.astro";
+import FeatureList from "../../components/FeatureList.astro";
+import Screenshots from "../../components/Screenshots.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { getApps, getAppSlug, type AppEntry } from "../../lib/apps";
+import {
+  getApps,
+  getAppSlug,
+  getDocName,
+  getDocs,
+  type AppEntry,
+} from "../../lib/apps";
+import { pageTitle } from "../../lib/site";
 
 export const getStaticPaths = (async () => {
   const apps = await getApps();
@@ -16,9 +27,107 @@ interface Props {
 }
 
 const { app } = Astro.props;
+const { name, tagline, description, screenshots, features, links } = app.data;
+const slug = getAppSlug(app);
+const { Content } = await render(app);
+const docNames = (await getDocs(slug)).map(getDocName);
 ---
 
-<BaseLayout title={app.data.name}>
-  <h1>{app.data.name}</h1>
-  <p>{app.data.tagline}</p>
+<BaseLayout
+  title={pageTitle(`${name}: ${tagline}`)}
+  description={description}
+  image={app.data.ogImage}
+  imageAlt={`${name}: ${tagline}`}
+  app={app}
+>
+  <AppHero app={app} />
+
+  {screenshots.length > 0 && (
+    <section aria-label="Screenshots" class="container-page py-8">
+      <Screenshots appName={name} screenshots={screenshots} />
+    </section>
+  )}
+
+  {features.length > 0 && (
+    <section
+      aria-labelledby="features-heading"
+      class="container-page py-10 md:py-14"
+    >
+      <h2 id="features-heading" class="text-2xl font-semibold tracking-tight">
+        What {name} does
+      </h2>
+      <div class="mt-8">
+        <FeatureList features={features} />
+      </div>
+    </section>
+  )}
+
+  {app.body?.trim() && (
+    <section
+      aria-labelledby="about-heading"
+      class="container-page py-10 md:py-14"
+    >
+      <h2 id="about-heading" class="text-2xl font-semibold tracking-tight">
+        About {name}
+      </h2>
+      <div class="prose-doc mt-6 max-w-[68ch]">
+        <Content />
+      </div>
+    </section>
+  )}
+
+  <section
+    aria-label="Privacy, source, and support"
+    class="container-page py-10 md:py-14"
+  >
+    <ul class="grid gap-4 md:grid-cols-3" role="list">
+      <li class="rounded-card border-border bg-surface border p-6">
+        <h2 class="font-semibold">Your privacy</h2>
+        <p class="text-muted mt-2 leading-relaxed">
+          Read what {name} collects, why, and how to remove it.
+        </p>
+        <ul class="mt-4 space-y-1.5">
+          {docNames.includes("privacy") && (
+            <li>
+              <a href={`/${slug}/privacy`} class="link">
+                Privacy policy
+              </a>
+            </li>
+          )}
+          {docNames.includes("delete-account") && (
+            <li>
+              <a href={`/${slug}/delete-account`} class="link">
+                Delete your account
+              </a>
+            </li>
+          )}
+        </ul>
+      </li>
+      {links.github && (
+        <li class="rounded-card border-border bg-surface border p-6">
+          <h2 class="font-semibold">Open source</h2>
+          <p class="text-muted mt-2 leading-relaxed">
+            The code for {name} is public. Read it, report issues, or
+            contribute.
+          </p>
+          <p class="mt-4">
+            <a href={links.github} class="link" rel="noopener">
+              {name} on GitHub
+            </a>
+          </p>
+        </li>
+      )}
+      <li class="rounded-card border-border bg-surface border p-6">
+        <h2 class="font-semibold">Support</h2>
+        <p class="text-muted mt-2 leading-relaxed">
+          Find answers to common questions or get in touch.
+        </p>
+        <p class="mt-4">
+          <a href={`/${slug}/support`} class="link">
+            {name} support
+          </a>
+        </p>
+      </li>
+    </ul>
+  </section>
 </BaseLayout>
