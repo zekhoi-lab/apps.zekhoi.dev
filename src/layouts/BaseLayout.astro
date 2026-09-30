@@ -60,6 +60,9 @@ const {
     <slot name="head" />
   </head>
   <body class="flex min-h-dvh flex-col">
+    {/* Cloudflare's Email Address Obfuscation would swap every address for
+         a script-decoded placeholder. These markers opt the page out. */}
+    <!--email_off-->
     <a
       href="#main"
       class="bg-accent text-accent-fg sr-only z-50 rounded-md px-4 py-2 focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
@@ -71,5 +74,6 @@ const {
       <slot />
     </main>
     <Footer app={app} />
+    <!--/email_off-->
   </body>
 </html>

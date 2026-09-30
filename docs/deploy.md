@@ -21,7 +21,12 @@ The site is a static Astro build deployed with the Cloudflare Pages Git integrat
 
 The site ships no JavaScript. Some Cloudflare zone features inject scripts, so turn these off for `apps.zekhoi.dev` (with a Configuration Rule if the rest of the zone needs them):
 
-- **Email Address Obfuscation** (Scrape Shield). It rewrites the `mailto:` support and deletion addresses into a script-decoded placeholder. Store reviewers and users without JS would see `[email protected]` instead of the address.
+- **Email Address Obfuscation** (Scrape Shield). It rewrites the `mailto:` support and deletion addresses into a script-decoded placeholder. Store reviewers and users without JS would see `[email protected]` instead of the address. `BaseLayout.astro` wraps every page in Cloudflare's `<!--email_off-->` markers, so addresses are left alone even while the setting is on. To confirm, this must print 0:
+
+  ```sh
+  curl -s https://apps.zekhoi.dev/daylime/support | grep -c email-protection
+  ```
+
 - **Rocket Loader** and automatic **Web Analytics** injection. If you want analytics, enable Cloudflare Web Analytics knowing it adds a small script, and update the website privacy policy (`src/content/site/privacy.md`).
 
 ## How URLs are served
