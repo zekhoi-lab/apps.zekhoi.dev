@@ -17,17 +17,23 @@ const { appName, screenshots } = Astro.props;
   aria-label={`${appName} screenshots`}
 >
   <ul class="flex snap-x snap-mandatory gap-4">
-    {screenshots.map((src, index) => (
-      <li class="shrink-0 snap-start">
-        <Image
-          src={src}
-          alt={`${appName} screenshot ${index + 1} of ${screenshots.length}`}
-          widths={[240, 480]}
-          sizes="240px"
-          class="border-border h-auto w-60 rounded-card border"
-          loading={index < 2 ? "eager" : "lazy"}
-        />
-      </li>
-    ))}
+    {screenshots.map((src, index) => {
+      const landscape = src.width > src.height;
+      return (
+        <li class="shrink-0 snap-start">
+          <Image
+            src={src}
+            alt={`${appName} screenshot ${index + 1} of ${screenshots.length}`}
+            widths={landscape ? [480, 960] : [240, 480]}
+            sizes={landscape ? "(min-width: 640px) 480px, 320px" : "240px"}
+            class:list={[
+              "border-border rounded-card h-auto border",
+              landscape ? "w-80 sm:w-120" : "w-60",
+            ]}
+            loading={index < 2 ? "eager" : "lazy"}
+          />
+        </li>
+      );
+    })}
   </ul>
 </div>
