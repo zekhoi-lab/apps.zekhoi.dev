@@ -23,6 +23,7 @@ features:
     description: Convert Unix timestamps and colors, work out CIDR blocks, change text case, write markdown with a preview, and compress images.
 links:
   web: https://labs.zekhoi.dev
+  github: https://github.com/zekhoi-lab/labs.zekhoi.dev
 supportEmail: me@zekhoi.dev
 hasAccounts: false
 faq:

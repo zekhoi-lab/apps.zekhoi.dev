@@ -40,7 +40,7 @@ We do not sell your data.
 | Provider    | What it does                                                     |
 | ----------- | ---------------------------------------------------------------- |
 | Cloudflare  | Hosts both sites and stores uploaded and generated files         |
-| Supabase    | Hosts the database, in Singapore                                 |
+| Supabase    | Hosts the database, in Seoul, South Korea                        |
 | OpenRouter  | Routes AI requests to the AI model that writes, draws, or checks |
 | Trigger.dev | Runs the background jobs that generate and check content         |
 | Resend      | Delivers account emails                                          |

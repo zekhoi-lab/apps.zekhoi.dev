@@ -25,6 +25,8 @@ hasAccounts: true
 faq:
   - question: When will Daylime be available?
     answer: Daylime is in beta on Android. Join the beta on Google Play to install it.
+  - question: Do I need an account?
+    answer: No. Without an account your check-ins stay on your phone. Limi, the AI companion, needs an account.
   - question: Is my journal sent to the AI companion?
     answer: Only what you share with it. When you use the AI companion, the message and the context it needs are sent to an AI provider to generate a reply. The privacy policy has the details.
   - question: How do I delete my account and data?

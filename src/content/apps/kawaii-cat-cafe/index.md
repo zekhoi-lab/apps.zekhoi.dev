@@ -20,7 +20,7 @@ features:
   - title: Decorate the room
     description: Buy furniture, wallpapers, and floors, and complete decor themes such as Sakura and Tea House.
   - title: Grow the cafe
-    description: Level up to unlock new furniture, new dishes, and a bigger room.
+    description: Level up to unlock new dishes and a bigger room, then pass star exams for a garden terrace, rare visitors, and upgrades.
 links:
   web: https://kawaii.zekhoi.dev
 supportEmail: me@zekhoi.dev

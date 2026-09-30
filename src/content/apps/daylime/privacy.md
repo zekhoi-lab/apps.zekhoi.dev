@@ -14,13 +14,15 @@ For anything about this policy or your data, email [me@zekhoi.dev](mailto:me@zek
 
 ## What we collect
 
-| Data         | What it includes                                                                                                                                                                                                                                                            |
-| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Account data | Your email address and display name. If you sign in with Apple or Google, the account identifier, name, and email address that provider shares with us.                                                                                                                     |
-| Journal data | The moods you log, the date and time of each check-in, and any notes or activity tags you add.                                                                                                                                                                              |
-| AI chat data | Messages you send to Limi, the AI companion, and Limi's replies, grouped into chat sessions. For long chats, a short summary of the older messages so Limi can remember them. Check-ins Limi suggests. For each reply, which AI model wrote it and how many tokens it used. |
-| Preferences  | App settings such as theme and reminder time, which stay on your device, and your choices about what Limi may see, which are saved with your account.                                                                                                                       |
-| Diagnostics  | Crash and error reports: device model, OS and app version, stack traces, and a random account ID. We configure these reports to exclude your email, names, request bodies, and authentication tokens.                                                                       |
+You can use Daylime without an account. Your check-ins, notes, and name then stay on your phone, and we never receive them. Your phone's own backup (Google or iCloud) may include them if you have turned it on. If you create an account or sign in, they are uploaded to it. Limi, the AI companion, needs an account.
+
+| Data         | What it includes                                                                                                                                                                                                                                                                                                                                                         |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Account data | Your email address and display name. If you sign in with Apple or Google, the account identifier, name, and email address that provider shares with us.                                                                                                                                                                                                                  |
+| Journal data | The moods you log, the date and time of each check-in, and any notes or activity tags you add.                                                                                                                                                                                                                                                                           |
+| AI chat data | Messages you send to Limi, the AI companion, and Limi's replies, grouped into chat sessions. For long chats, a short summary of the older messages so Limi can remember them. Check-ins Limi suggests. Reports you send about one of Limi's replies, with the reason you pick and any note you add. For each reply, which AI model wrote it and how many tokens it used. |
+| Preferences  | App settings such as theme and reminder time, which stay on your device, and your choices about what Limi may see, which are saved with your account.                                                                                                                                                                                                                    |
+| Diagnostics  | Crash and error reports: device model, OS and app version, stack traces, and a random account ID. We configure these reports to exclude your email, names, request bodies, and authentication tokens.                                                                                                                                                                    |
 
 Daylime has no passwords. You sign in with a code we email you, or with Apple or Google.
 
@@ -64,6 +66,8 @@ Our database is hosted by Cloudflare in its Asia-Pacific region. Our providers m
 We keep your data while your account exists. You can delete individual entries at any time, and you can [delete your whole account](/daylime/delete-account) in the app or by email.
 
 Deletion immediately removes your account, entries, and chat history, including chat summaries, from our database. Database restore points are kept for up to 7 days and then deleted. Sign-in codes expire after 10 minutes.
+
+Without an account, everything stays on your phone, and Delete all data on this phone, under Settings, then Your data, removes it.
 
 ## Security
 

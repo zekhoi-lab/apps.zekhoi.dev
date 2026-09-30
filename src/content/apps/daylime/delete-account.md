@@ -6,6 +6,10 @@ updatedAt: 2026-09-30
 
 You can delete your Daylime account at any time, from inside the app or by email if you can no longer open it. This permanently deletes your account, check-ins, and conversations.
 
+## Using Daylime without an account
+
+Without an account, your check-ins are only on your phone. Go to Settings, then Your data, then Delete all data on this phone to remove everything.
+
 ## Before you delete
 
 Deleted check-ins and conversations cannot be recovered. Note down anything you want to keep first.
