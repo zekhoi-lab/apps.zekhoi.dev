@@ -25,11 +25,11 @@ In Settings you can save your cafe as a file and load it again. The file is writ
 
 The game loads its font from Google Fonts, so your browser makes a request to Google when the game opens.
 
-TODO: confirm the hosting provider for kawaii.zekhoi.dev, and what request logs it keeps and for how long.
+The game is hosted on Cloudflare. When you open it, Cloudflare receives the technical data any website receives: your IP address, browser user agent, the files requested, and the time. This data is used to deliver the game and protect it from abuse, as described in the [Cloudflare privacy policy](https://www.cloudflare.com/privacypolicy/).
 
 ## Removing your data
 
-Choose "start a new cafe" in Settings to replace your save, or clear the site data for kawaii.zekhoi.dev in your browser to remove everything the game stored.
+To erase your cafe, open Settings in the game and choose Start a new cafe. To remove everything the game stored, clear the site data for kawaii.zekhoi.dev in your browser.
 
 ## Contact
 

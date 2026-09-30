@@ -25,10 +25,12 @@ const { appName, screenshots } = Astro.props;
             src={src}
             alt={`${appName} screenshot ${index + 1} of ${screenshots.length}`}
             widths={landscape ? [480, 960] : [240, 480]}
-            sizes={landscape ? "(min-width: 640px) 480px, 320px" : "240px"}
+            sizes={landscape ? "(min-width: 640px) 416px, 320px" : "240px"}
             class:list={[
               "border-border rounded-card h-auto border",
-              landscape ? "w-80 sm:w-120" : "w-60",
+              // 26rem leaves part of the third image showing on wide screens,
+              // so it is clear the strip scrolls.
+              landscape ? "w-80 sm:w-104" : "w-60",
             ]}
             loading={index < 2 ? "eager" : "lazy"}
           />

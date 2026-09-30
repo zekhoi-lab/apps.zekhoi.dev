@@ -11,7 +11,7 @@ const apps = defineCollection({
       description: z.string(),
       type: z.enum(["app", "game"]),
       platforms: z.array(z.enum(["android", "ios", "web"])),
-      status: z.enum(["live", "beta", "coming-soon"]),
+      status: z.enum(["live", "early-access", "beta", "coming-soon"]),
       icon: image(),
       ogImage: image().optional(),
       screenshots: z.array(image()).default([]),

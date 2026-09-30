@@ -1,104 +1,87 @@
 ---
 title: Privacy Policy
 description: What Daylime collects, why, where it is stored, and how to access or delete it.
-updatedAt: 2026-09-26
+updatedAt: 2026-09-30
 ---
 
-This policy explains what data Daylime collects, why, who it is shared with, and the choices you have. A mood journal holds personal things, so we collect only what the app needs to work and we do not sell your data.
-
-Effective date: TODO: set to the public release date.
+This policy explains what Daylime collects, why, who we share it with, and the choices you have. It covers the Daylime mood journal app and the service behind it. Your mood entries and reflections are personal, and we treat them as sensitive data.
 
 ## Who we are
 
-Daylime is made by zekhoi, an independent developer. TODO: confirm the developer name exactly as it appears on the Google Play listing, and add a postal address if one is required for your listing.
+Daylime is made by Khoironi Kurnia Syah (zekhoi), an independent developer in Pelaihari, South Kalimantan, Indonesia.
 
 For anything about this policy or your data, email [me@zekhoi.dev](mailto:me@zekhoi.dev).
 
 ## What we collect
 
-| Data                  | What it is                                                         | Why we collect it                                    |
-| --------------------- | ------------------------------------------------------------------ | ---------------------------------------------------- |
-| Account data          | Your email address and sign-in details. TODO: list sign-in methods | To create your account and keep your journal in sync |
-| Journal entries       | The text you write in the app                                      | To store and show your journal                       |
-| Mood data             | The moods you log and when you logged them                         | To show your mood history and trends                 |
-| AI companion messages | What you send to the AI companion and its replies                  | To provide the AI companion feature                  |
-| Device information    | Device model, OS version, app version, language                    | To keep the app compatible and debug problems        |
-| Usage analytics       | Which screens and features are used. TODO: confirm if collected    | To understand what to improve                        |
-| Crash reports         | Technical details about crashes. TODO: confirm if collected        | To find and fix bugs                                 |
+| Data         | What it includes                                                                                                                                                                                                                                                            |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Account data | Your email address and display name. If you sign in with Apple or Google, the account identifier, name, and email address that provider shares with us.                                                                                                                     |
+| Journal data | The moods you log, the date and time of each check-in, and any notes or activity tags you add.                                                                                                                                                                              |
+| AI chat data | Messages you send to Limi, the AI companion, and Limi's replies, grouped into chat sessions. For long chats, a short summary of the older messages so Limi can remember them. Check-ins Limi suggests. For each reply, which AI model wrote it and how many tokens it used. |
+| Preferences  | App settings such as theme and reminder time, which stay on your device, and your choices about what Limi may see, which are saved with your account.                                                                                                                       |
+| Diagnostics  | Crash and error reports: device model, OS and app version, stack traces, and a random account ID. We configure these reports to exclude your email, names, request bodies, and authentication tokens.                                                                       |
 
-We do not collect your precise location, contacts, photos, or advertising identifiers. TODO: confirm this list matches the permissions the app requests.
+Daylime has no passwords. You sign in with a code we email you, or with Apple or Google.
 
-## How we use your data
+We do not use advertising or analytics SDKs, we do not track you across other apps or websites, and we do not sell or rent your data.
 
-We use your data to:
+## How we use it
 
-- Run your account and sync your journal across devices.
-- Show your entries and mood history back to you.
-- Provide the AI companion when you choose to use it.
-- Fix bugs, keep the service secure, and understand which features help.
-- Reply when you contact support.
+- To provide the service: store and sync your journal, show your stats, and run AI chat.
+- To keep chat safe: each message is checked for signs that you may be at risk, by keyword matching and by an AI safety classifier (Llama Guard) run by Cloudflare. If it shows such signs, Limi shows crisis lines instead of an AI reply.
+- To secure your account: sign-in codes, sessions, and preventing abuse, for example with rate limits.
+- To fix problems and keep the app reliable, using diagnostics.
+- To contact you about your account, for example with sign-in codes. We do not send marketing email.
 
-We do not sell your data, and we do not use your journal entries for advertising.
+Limi can draft a check-in from what you tell it. A drafted check-in is saved to your journal only if you tap Save.
 
-## The AI companion
+We do not use your journal or chat content to train AI models.
 
-When you talk to the AI companion, the message you send and the context needed to answer it (such as the related journal entry or mood) is sent to an AI provider to generate a reply. The companion is only used when you open it. Entries you never share with it are not sent.
+## Who we share it with
 
-- AI provider: TODO: name the provider (for example Anthropic, OpenAI, or Google) and link its privacy policy.
-- Training: TODO: confirm whether the provider may use this data to train its models. If the API terms say it does not, state that here.
-- Retention by the provider: TODO: state how long the provider keeps prompts and replies.
+We share data only with service providers that help us run Daylime, under contracts that limit their use of it.
 
-## Third-party services
+| Provider                                          | What it does                                                           |
+| ------------------------------------------------- | ---------------------------------------------------------------------- |
+| OpenRouter and the AI model provider it routes to | Generates Limi's replies                                               |
+| Sentry                                            | Receives crash and error reports, as described above                   |
+| Cloudflare                                        | Hosting, our database (Asia-Pacific region), and the chat safety check |
+| Resend                                            | Delivers sign-in codes to your email address                           |
 
-We use a small number of service providers to run Daylime. They process data only on our behalf and for the purposes below.
+When you use AI chat, your message is sent to generate a reply, together with up to 30 earlier messages from the same chat, a summary of any older ones, and your device's time zone so Limi knows your local date and time.
 
-| Service                   | Role                                    | Data involved                 |
-| ------------------------- | --------------------------------------- | ----------------------------- |
-| TODO: backend or database | Stores accounts, entries, and mood data | Account data, entries, moods  |
-| TODO: authentication      | Handles sign-in                         | Account data                  |
-| TODO: AI provider         | Generates AI companion replies          | AI companion messages         |
-| TODO: analytics, if used  | Measures feature usage                  | Usage analytics, device info  |
-| TODO: crash reporting     | Collects crash reports                  | Crash reports, device info    |
-| Google Play               | Distributes the app                     | Governed by Google's policies |
+Your journal is sent only if you turn on Recent check-ins under Settings, then Limi. The moods, activity tags, and times of your check-ins from the last 14 days then go with each message. Notes are included only if you also turn on Notes. That screen shows exactly what is shared. We only use AI providers that do not store or train on this data.
 
-## Where your data is stored and how long we keep it
+We may disclose data if required by law, or to protect the safety of users or others. If Daylime is ever transferred to another owner, this policy will continue to apply to your data.
 
-Your data is stored on servers in TODO: region or country. If that is outside your country, your data is transferred there under the safeguards the provider offers.
+## Where your data is stored
 
-We keep your data while your account exists. When you delete your account, we delete your data as described on the [account deletion page](/daylime/delete-account).
+Our database is hosted by Cloudflare in its Asia-Pacific region. Our providers may process data in countries other than yours, including the United States. Where required, we rely on appropriate safeguards such as standard contractual clauses.
 
-- Account data, entries, mood data, and AI companion messages: kept until you delete them or your account.
-- Backups: TODO: state how long deleted data can remain in backups.
-- Device information, analytics, and crash reports: TODO: state the retention period.
-- Support emails: TODO: state the retention period.
+## Retention and deletion
 
-## How we protect your data
+We keep your data while your account exists. You can delete individual entries at any time, and you can [delete your whole account](/daylime/delete-account) in the app or by email.
 
-- Data is encrypted in transit with TLS.
-- TODO: confirm whether data is encrypted at rest, and whether entries are end-to-end encrypted.
-- Access to production data is limited to the developer, and only when needed to run the service or answer your request.
+Deletion immediately removes your account, entries, and chat history, including chat summaries, from our database. Database restore points are kept for up to 7 days and then deleted. Sign-in codes expire after 10 minutes.
 
-No system is perfectly secure. If a breach affects your data, we will tell you and the relevant authorities as the law requires.
+## Security
 
-## Your rights and choices
+Data is encrypted in transit (HTTPS). We store no passwords. Your session token is kept in your device's secure keychain or keystore. No system is perfectly secure, but we work to protect your data and will notify you as required by law if a breach affects it.
 
-You can:
+## Your rights
 
-- **Access** your data in the app at any time.
-- **Export** your entries. TODO: describe where export lives in the app, or remove this line if export is not available.
-- **Correct** or delete individual entries in the app.
-- **Delete** your account and its data, from the app or by email. See [Delete your account](/daylime/delete-account).
-- **Stop using the AI companion** at any time. Nothing is sent to the AI provider unless you use it.
+Depending on where you live, for example under the GDPR or California law, you may have the right to access, correct, export, or delete your data, and to object to or restrict processing. You can edit your name in the app, delete entries or your account at any time, or email [me@zekhoi.dev](mailto:me@zekhoi.dev) for anything else. You also have the right to complain to your local data-protection authority.
 
-Depending on where you live, including under Indonesia's Personal Data Protection Law and the GDPR, you may have more rights, such as objecting to processing or requesting a copy of your data in a portable format. Email us to use any of them. We reply within 30 days.
+We rely on your consent to process health-related journal data, to send chat messages to our AI provider, and, if you turn it on, to share your check-ins with Limi. We rely on our contract with you to provide the service. You can withdraw consent by turning sharing off under Settings, then Limi, or by deleting the data or your account.
 
-## Children's privacy
+## Children
 
-Daylime is not directed at children under 13, and we do not knowingly collect data from them. TODO: confirm the minimum age (some regions require 16). If you believe a child has created an account, email us and we will delete it.
+Daylime is not directed to children under 13, or the minimum age in your country, and we do not knowingly collect their data. If you believe a child has created an account, email us and we will delete it.
 
-## Changes to this policy
+## Changes
 
-If we change this policy, we will update the date at the top of this page. For significant changes, we will also tell you in the app or by email before they take effect.
+If we change this policy, the date at the top of this page will change. For significant changes, we will let you know in the app before they take effect.
 
 ## Contact
 

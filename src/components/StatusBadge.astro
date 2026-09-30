@@ -9,12 +9,14 @@ const { status } = Astro.props;
 
 const labels: Record<Props["status"], string> = {
   live: "Available",
+  "early-access": "Early access",
   beta: "Beta",
   "coming-soon": "Coming soon",
 };
 
 const styles: Record<Props["status"], string> = {
   live: "bg-accent-soft text-accent-strong",
+  "early-access": "bg-surface-2 text-fg",
   beta: "bg-surface-2 text-fg",
   "coming-soon": "bg-surface-2 text-muted",
 };

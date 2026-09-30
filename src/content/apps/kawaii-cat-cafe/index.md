@@ -4,7 +4,7 @@ tagline: A cozy cat cafe tycoon you play in your browser
 description: Kawaii Cat Cafe is a cozy isometric cafe tycoon. Hire staff, collect cats, decorate the room, and grow a tiny coffee corner into the most popular cat cafe in town.
 type: game
 platforms: [web]
-status: live
+status: early-access
 icon: ../../../assets/apps/kawaii-cat-cafe/icon.png
 ogImage: ../../../assets/apps/kawaii-cat-cafe/og.png
 screenshots:
@@ -18,14 +18,16 @@ features:
   - title: Collect cats
     description: Spend treats to pull one of 16 cats. Customers pet the cats near their seat, and duplicates make a cat's trait stronger.
   - title: Decorate the room
-    description: Buy furniture, wallpapers, and floors, recolour pieces, and complete decor themes such as Sakura and Tea House.
-  - title: Grow to five stars
-    description: Pass star exams to earn bigger rooms, a garden terrace, rare visitors, and upgrades.
+    description: Buy furniture, wallpapers, and floors, and complete decor themes such as Sakura and Tea House.
+  - title: Grow the cafe
+    description: Level up to unlock new furniture, new dishes, and a bigger room.
 links:
   web: https://kawaii.zekhoi.dev
 supportEmail: me@zekhoi.dev
 hasAccounts: false
 faq:
+  - question: Is the game finished?
+    answer: Not yet. Kawaii Cat Cafe is in early access and still in development, so expect changes and the odd bug.
   - question: Do I need an account?
     answer: No. The game has no accounts. Open it in a browser and play.
   - question: Where is my cafe saved?
@@ -42,3 +44,5 @@ order: 2
 Kawaii Cat Cafe is a cozy isometric cafe tycoon built with three.js. Hire staff, collect cats that customers love to pet, decorate the cafe, and grow it from a tiny coffee corner into the most popular cat cafe in town.
 
 It runs in the browser on computers, phones, and tablets, with nothing to install.
+
+The game is in early access and still in development, so things may change between visits.
